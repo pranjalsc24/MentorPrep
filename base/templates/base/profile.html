@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<style>
+  .links{
+    margin-bottom: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .expertise{
+    margin-top: 5%;
+  }
+</style>
+  <main class="profile-page layout layout--3">
+    <div class="container">
+      <!-- Topics Start -->
+      {% include 'base/topics_component.html' %}
+      <!-- Topics End -->
+
+      <!-- Room List Start -->
+      <div class="roomList">
+        <div class="profile">
+          <div class="profile__avatar">
+            <div class="avatar avatar--large active">
+              <img src="{% static 'images\icon.jpg' %}" />
+            </div>
+          </div>
+          <div class="profile__info">
+            <h3>{{user.username}}</h3>
+            <p>@{{user.username}}</p>
+            {% if request.user == user %}
+            <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
+            {% endif %}
+          </div>
+          <div class="profile__about">
+            <div class="section_profile" style="display: grid;grid-template-columns:1fr 1fr;gap:1rem;;margin-bottom: 2%;">
+              <a class="btn btn--main" href="{% url 'upload_document' %}" style="margin-bottom: 2%;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                      <title>graph</title>
+                      <path d="M2 17h6v12h4V8h6V24h4V14h6V30" fill="none" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                  Upload Documents
+                </a>
+                <a class="btn btn--main" href="{% url 'document_list' %}" style="margin-bottom: 2%;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                      <title>graph</title>
+                      <path d="M2 17h6v12h4V8h6V24h4V14h6V30" fill="none" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                  Documents List
+                </a>
+            </div>
+            <h3>About</h3>
+            <p>
+              {{profile_data.summary}}
+            </p>
+          </div>
+        </div>
+        <div class="links">
+          <div class="github">
+            <h3>Github Link</h3>
+            <p><a href={{profile_data.github}}>{{profile_data.github}}</a></p>
+          </div>
+          <div class="linkdin">
+            <h3>Linkdin Link</h3>
+            <p><a href={{profile_data.linkedin}}>{{profile_data.linkedin}}</a></p>
+          </div>
+          <div class="expertise">
+            <h3>Expertise</h3>
+            <p>{{profile_data.personal_details}}</p>
+          </div>
+        </div>
+        <!-- <div class="roomList__header">
+          <div>
+            <h2>Study Rooms Hosted by {{user.username}}</a>
+            </h2>
+          </div>
+        </div>
+        {% include 'base/feed_component.html'  %} -->
+       
+      </div>
+      <!-- Room List End -->
+
+      <!-- Activities Start -->
+      {% include 'base/activity_component.html' %}
+      <!-- Activities End -->
+    </div>
+  </main>
+{% endblock content %}

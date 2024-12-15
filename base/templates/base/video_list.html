@@ -1,0 +1,24 @@
+<!-- templates/videoupload/video_list.html -->
+{% extends 'main2.html' %} 
+{% block content %}
+<div style="max-width: 800px; margin: 20px auto">
+  <h2>Video List</h2>
+  <a href="{% url 'upload_video' %}" style="display: block; margin-bottom: 10px"
+    >Upload a Video</a
+  >
+  {% for video in videos %}
+  <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 20px">
+    <h3>{{ video.title }}</h3>
+    <p>{{ video.description }}</p>
+    <video width="100%" controls>
+      <source src="{{ video.get_video_url }}" />
+      Your browser does not support the video tag.
+    </video>
+    <p style="margin-top: 10px">
+      Uploaded by: {{ video.uploaded_by.username }}
+    </p>
+    <p>Upload Date: {{ video.upload_date }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

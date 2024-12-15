@@ -1,0 +1,112 @@
+{% extends 'main2.html' %}
+{% block content %}
+{% load static %}
+<style>
+  .links{
+    margin-bottom: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .expertise{
+    margin-top: 5%;
+  }
+</style>
+  <main class="profile-page layout layout--3">
+    <div class="container">
+      <!-- Topics Start -->
+      {% include 'base/topics_component.html' %}
+      <!-- Topics End -->
+
+      <!-- Room List Start -->
+      <div class="roomList">
+        <div class="profile">
+          <div class="profile__avatar">
+            <div class="avatar avatar--large active">
+              <img src="{% static 'images\icon.jpg' %}" />
+            </div>
+          </div>
+          <div class="profile__info">
+            <h3>{{user.username}}</h3>
+            <p>@{{user.username}}</p>
+            {% if request.user == user %}
+            <a href="{% url 'update-mentor' %}" class="btn btn--main btn--pill">Edit Profile</a>
+            {% endif %}
+          </div>
+          <div class="profile__about">
+            <div class="section_profile" style="display: grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <a class="btn btn--main" href="{% url 'analysis-dashboard' request.user.username  %}" style="margin-bottom: 2%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                    <title>graph</title>
+                    <path d="M2 17h6v12h4V8h6V24h4V14h6V30" fill="none" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                Analysis Dashboard
+              </a>
+              <a class="btn btn--main" href="{% url 'upload_video'  %}" style="margin-bottom: 2%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                  <title>camera</title>
+                  <path d="M16 2c-3.313 0-6 2.687-6 6s2.687 6 6 6 6-2.687 6-6-2.687-6-6-6zm0 10c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm14-8h-3.584l-2-2h-8.832l-2 2H2v24h28V4zm-14 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8zm0-14c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4z" fill="none" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              
+                Upload Video
+              </a>
+              <a class="btn btn--main" href="{% url 'video_list'  %}" style="margin-bottom: 2%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <title>list</title>
+                  <path d="M3 5h18v2H3zm0 6h18v2H3zm0 6h18v2H3z" fill="none" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              
+              
+                Video List
+              </a>
+              <a class="btn btn--main" href="{% url 'user_rooms_timeline_graph'  %}" style="margin-bottom: 2%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="20">
+                  <!-- Background bar in grey -->
+                  <rect width="100%" height="100%" fill="#CCCCCC" />
+              
+                  <!-- Progress bar (50% completion for illustration) -->
+                  <rect width="50%" height="100%" fill="#51546e" />
+              </svg>
+              
+              
+              
+              
+                Student Progress
+              </a>
+            </div>
+            <h3>About</h3>
+            <p>
+              {{profile_data.summary}}
+            </p>
+          </div>
+        </div>
+        <div class="links">
+          <div class="github">
+            <h3>Github Link</h3>
+            <p><a href={{profile_data.github}}>{{profile_data.github}}</a></p>
+          </div>
+          <div class="linkdin">
+            <h3>Linkdin Link</h3>
+            <p><a href={{profile_data.linkedin}}>{{profile_data.linkedin}}</a></p>
+          </div>
+          <div class="expertise">
+            <h3>Expertise</h3>
+            <p>{{profile_data.personal_details}}</p>
+          </div>
+        </div>
+        <div class="roomList__header">
+          <div>
+            <h2>Study Rooms Hosted by {{user.username}}</a>
+            </h2>
+          </div>
+        </div>
+        {% include 'base/feed_component_mentor.html'  %}
+       
+      </div>
+      <!-- Room List End -->
+
+      <!-- Activities Start -->
+      {% include 'base/activity_component.html' %}
+      <!-- Activities End -->
+    </div>
+  </main>
+{% endblock content %}

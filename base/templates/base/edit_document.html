@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="maincontainer">
+        <h2>Edit Document</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="content">Document Content:</label>
+            <textarea name="content" rows="10" cols="50">{{ document.file.read() }}</textarea>
+            <br>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!-- templates/videoupload/video_list.html -->
+{% extends 'main.html' %} 
+{% block content %}
+<div style="max-width: 800px; margin: 20px auto">
+  
+  <div class="layout__boxTitle" style="margin-bottom: 2%;">
+    <a href="{% url 'home'  %}">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+            viewBox="0 0 32 32">
+            <title>arrow-left</title>
+            <path
+                d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+            </path>
+            </svg>
+        </a>
+        <h3>Home</h3>
+    </div>
+    <h2 style="margin-bottom: 1%;">Video List</h2>
+  {% for video in videos %}
+  <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 20px">
+    <h3>{{ video.title }}</h3>
+    <p>{{ video.description }}</p>
+    <video width="100%" controls>
+      <source src="{{ video.get_video_url }}" />
+      Your browser does not support the video tag.
+    </video>
+    <p style="margin-top: 10px">
+      Uploaded by: {{ video.uploaded_by.username }}
+    </p>
+    <p>Upload Date: {{ video.upload_date }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

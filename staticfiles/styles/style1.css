@@ -1,0 +1,108 @@
+/*--------------------------------------------------subscription page----------------------------*/
+.subscribe{
+    display: flex;
+    justify-content: space-around;
+    /* gap: -3rem; */
+    margin-top: 5rem; 
+    text-align: center;
+    
+}
+.subscriptionblocks ul{
+    text-align: left;
+    margin-top: 2rem;
+    /* padding-left: 4rem; */
+}
+.subscribe ul li{
+    margin-left: 5rem;
+    list-style: square;
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.subscribe h1{
+    font-size: 2rem;
+    margin-top: 2rem;
+    color: gold;
+}
+.subscribe i{
+    margin-top: 2rem;
+    font-size: 5rem;
+    color: #71c6dd;
+}
+.subscribe h2{
+    font-size: 3rem;
+    margin-top: 2rem;
+    
+    color: inherit;
+}
+.subscriptionblocks{
+    
+    width: 20%;
+    border: 1px solid hsla(0, 0%, 75%, 0.533);
+    border-radius: 2rem;
+    padding-bottom: 7rem;
+    background-color:  #3f4156;
+}
+.purchase{
+    margin-top: 2rem;
+    border: none;
+    background: #696d97;
+    color: #ffff;
+    height: 5rem;
+    width: 12rem;
+    border-radius: 2rem;
+
+}
+.button1{
+    position: relative;
+    margin-top: 9rem;
+
+}
+/*-----------------------------------------------------footer page--------------------------*/
+.app-footer{
+    margin-top: 4rem;
+    background-color:  #3f4156;
+    /* height: 20vh; */
+}
+.app-footer hr{
+    border: none;
+    border-top: 1px solid #c0c0c0;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer span{
+    margin-left: 1rem;
+}
+.footer i{
+    margin-left: 2rem;
+    font-size: 2rem;
+    margin-top: 1rem;
+    
+}
+.footer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.footer-content{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    
+
+}
+.footer-content ul{
+    list-style: none;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+}
+.footer-content ul li{
+    margin-top: 1rem;
+}
+.footer-content h1{
+    margin-bottom: 1rem;
+}
+.subscribe{
+    background: #3f4156;
+}

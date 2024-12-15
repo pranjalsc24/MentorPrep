@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load embed_video_tags %}
+<main class="">
+    <div class="" style="display: block;width: 100%;">
+
+  
+    <div class="courses-container" style="margin-top:2rem;margin-left:auto;margin-right: auto;width: 80%;">
+    <h1 class="courses-header" style="font-size: 2rem;margin-bottom: -1rem;">Free Courses</h1>
+    <div class="free-courses" style="display:grid;grid-template-columns: repeat(auto-fill,minmax(200px,0.5fr));gap:3rem;margin-top: 2rem;">
+
+    {% for i in obj %}
+    <div class="courses-block">
+
+  
+    {% video i.video '225 x 225' %}
+    <h1>{{i.videotitle}}</h1>
+    </div>
+    {% endfor %}
+   </div>
+  </div>
+  <div class="popular_courses" style="margin-top:2rem;margin-left:auto;margin-right: auto;width: 80%;">
+    <h1 class="courses-header" style="font-size: 2rem;margin-bottom: -1rem;">Popular Courses</h1>
+    <div class="free-courses" style="display:grid;grid-template-columns: repeat(auto-fill,minmax(200px,0.5fr));gap:3rem;margin-top: 2rem;">
+
+    {% for i in obj %}
+    <div class="courses-block">
+
+  
+    {% video i.video '225 x 225' %}
+    <h1>{{i.videotitle}}</h1>
+    </div>
+    {% endfor %}
+   </div>
+
+  </div>
+
+  </div>
+  {% include 'base/footer.html' %}
+</main>
+{% endblock content %}   

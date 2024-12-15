@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% load static  %}
+
+{% block content %}
+<style>
+    .maincontainer{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3%;
+    }
+</style>
+<div class="maincontainer">
+    <h2 style="margin-bottom: 2%;">Public Documents</h2>
+  
+    {% if public_documents %}
+        {% for document in public_documents %}
+            <div class="roomListRoom">
+                <!-- Your existing code for displaying each document -->
+                <div class="roomListRoom__header">
+                    <a href="{% url 'user-profile' document.user.id %}" class="roomListRoom__author">
+                        <div class="avatar avatar--small">
+                            <img src="{% static 'images\avatar.svg' %}" />
+                        </div>
+                        <span>@{{ document.user.username }}</span>
+                    </a>
+                    <div class="roomListRoom__actions">
+                        <span>{{ document.uploaded_at|timesince }}</span>
+                    </div>
+                </div>
+                <div class="roomListRoom__content">
+                    <a href="{{ document.file.url }}" target="_blank" download="{{ document.file.name }}">
+                        {{ document.file.name }}
+                    </a>
+                    <p>{{ document.description }}</p>
+                </div>
+                <div class="roomListRoom__meta">
+                    <a href="{{ document.file.url }}" class="roomListRoom__joined">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                            <title>file</title>
+                            <!-- Add the appropriate path for the file icon here -->
+                        </svg>
+                        Download
+                    </a>
+                    <small>Uploaded at: {{ document.uploaded_at }}</small>
+                </div>
+                <!-- End existing code -->
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No public documents available.</p>
+    {% endif %}
+</div>
+{% endblock %}
